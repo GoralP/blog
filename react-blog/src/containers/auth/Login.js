@@ -14,7 +14,7 @@ const loginSchema = yup.object().shape({
 });
 
 const Login = () => {
-  const { control, register, handleSubmit, errors } = useForm({
+  const { control, register, handleSubmit, errors, reset } = useForm({
     resolver: yupResolver(loginSchema),
   });
 
@@ -23,6 +23,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     dispatch(login(data.username, data.password, history));
+    reset(data);
   };
 
   return (
