@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Container, Button, FormGroup, Label } from "reactstrap";
 import { useDispatch } from "react-redux";
-import { registration } from "../../redux/auth/actions/registration";
+import { registration } from "../../redux/actions/AuthActions";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
@@ -29,13 +29,13 @@ const Registration = () => {
   };
 
   return (
-    <Container className="background-image background" fluid={true}>
+    <Container className="auth-background" fluid={true}>
       <Form
         className="form-layout"
         onSubmit={handleSubmit(onSubmit)}
         id="myform"
       >
-        <h2 className="text-center mb-4 text-secondary ">SIGN UP</h2>
+        <h2 className="text-center mb-4 text-secondary">SIGN UP</h2>
         <FormGroup>
           <Label>User Name</Label>
           <Controller
@@ -87,7 +87,7 @@ const Registration = () => {
           )}
         </FormGroup>
 
-        <Button className="bg-info login-btn" name="submit">
+        <Button className="login-btn" name="submit">
           Sign Up
         </Button>
       </Form>

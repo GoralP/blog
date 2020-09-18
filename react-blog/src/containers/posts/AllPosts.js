@@ -26,7 +26,7 @@ const AllPosts = () => {
       <Header></Header>
 
       <Container className="home-bg " fluid={true}>
-        <h2 className="allpost-title">All Posts</h2>
+        <h2 className="allpost-heading">All Posts</h2>
         {loading ? (
           <Spin size="large" className="spin" />
         ) : (
@@ -38,7 +38,7 @@ const AllPosts = () => {
                   <Row className="card">
                     <Col
                       sm="12"
-                      className="text-info font-weight-bold card-title-size"
+                      className="text-info font-weight-bold allpost-card-title"
                     >
                       {post.title}
                     </Col>
@@ -47,7 +47,7 @@ const AllPosts = () => {
                         <Col sm="2">
                           <img
                             alt="Blog"
-                            className="home-card-image"
+                            className="allpost-card-image"
                             src={
                               post.featured_media &&
                               `https://infblogdemo.herokuapp.com${post.featured_media.url}`

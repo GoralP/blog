@@ -9,14 +9,11 @@ body {
 }
 /****************************** Login page *****************************/
 
-.background {
+.auth-background {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-.background-image {
   background-image: url("./images/auth-bg-image.jpg");
   background-size: cover;
 }
@@ -32,18 +29,22 @@ body {
   box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
 }
 
-.logo {
+.login-user-logo {
   height: 7rem;
   width: 7rem;
   margin-top: -4.8rem;
   border-radius: 5rem;
   margin-bottom: 1rem;
-}
-
-.logo-center {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.login-heading {
+  color: rgb(19, 61, 86);
+  display: block;
+  text-align: center;
+  margin-bottom: 1.3rem;
 }
 
 .login-btn {
@@ -63,16 +64,6 @@ body {
   background-size: cover;
 }
 
-.submit-btn:hover {
-  transition: all 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.7) !important;
-}
-
-.login-heading {
-  color: rgb(19, 61, 86);
-  display: block;
-}
-
 input[id="user"],
 input[id="pwd"] {
   background: -webkit-linear-gradient(
@@ -88,30 +79,28 @@ input[id="pwd"] {
 
 /****************************** Header component *************************/
 
-.navbar-item {
+.navbar-menu {
   color: black !important;
+  background-color: rgb(255, 255, 255);
+  font-weight: 600;
 }
 
-.icon-category {
+.category-icon {
   height: 0.8rem;
   width: 0.8rem;
   margin-right: 0.3rem;
 }
 
-.icon-home {
+.home-icon {
   height: 1rem;
   width: 1rem;
-  margin-right: 0.3rem;
+  margin-right: 0.1rem;
 }
 
-.navbar-item:hover {
+.navbar-menu:hover {
   color: white !important;
   background-color: rgb(0, 123, 255) !important;
   padding: 0.5rem 1rem;
-}
-.nav-menu {
-  background-color: rgb(255, 255, 255);
-  font-weight: 600;
 }
 
 .blog-logo {
@@ -134,21 +123,21 @@ input[id="pwd"] {
   padding-bottom: 35rem;
 }
 
-.allpost-title {
+.allpost-heading {
   text-align: center;
   font-weight: bold;
 }
 
-.card-title-size {
+.allpost-card-title {
   font-size: 1.8rem !important;
 }
 
 .card {
   border-bottom: 1px solid black;
-  padding: 1.5rem 0rem;
+  padding: 1.5rem 0.3rem;
 }
 
-.home-card-image {
+.allpost-card-image {
   height: 100%;
   width: 100%;
   padding: 0.3rem 0.3rem;
@@ -156,7 +145,7 @@ input[id="pwd"] {
   border-radius: 0.2rem;
 }
 
-.home-card-image:hover {
+.allpost-card-image:hover {
   border: 1.5px solid rgb(0, 123, 255, 0.5);
 }
 
@@ -227,7 +216,7 @@ input[id="pwd"] {
 
 /*************************** Singlepost page ****************/
 
-.home-icon {
+.icon-arrow {
   height: 2rem;
   width: 2rem;
 }

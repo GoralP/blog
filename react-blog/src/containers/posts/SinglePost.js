@@ -41,7 +41,7 @@ const SinglePost = () => {
     <>
       <Header></Header>
 
-      <Container className="home-bg " fluid={true}>
+      <Container className="home-bg" fluid={true}>
         <Container>
           <Row className="singlepost-layout bg-white">
             {loading ? (
@@ -51,7 +51,7 @@ const SinglePost = () => {
                 {post !== null && (
                   <>
                     <Link to="/">
-                      <FaArrowLeft id="hometooltip" className="home-icon" />
+                      <FaArrowLeft id="hometooltip" className="icon-arrow" />
                       <Tooltip
                         placement="bottom"
                         isOpen={tooltipOpen}
