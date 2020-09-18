@@ -8,6 +8,7 @@ import Moment from "react-moment";
 import { Spin } from "antd";
 import { FaUser, FaCalendarAlt, FaList, FaTags } from "react-icons/fa";
 import _ from "lodash";
+import blogs from "../../images/blog-post.jpg";
 
 const AllPosts = () => {
   const dispatch = useDispatch();
@@ -44,14 +45,15 @@ const AllPosts = () => {
                     </Col>
                     <Col sm="12" className="blog-text">
                       <Row>
-                        <Col sm="2">
+                        <Col sm="3">
                           <img
                             alt="Blog"
                             className="allpost-card-image"
-                            src={
-                              post.featured_media &&
-                              `https://infblogdemo.herokuapp.com${post.featured_media.url}`
-                            }
+                            src={blogs}
+                            // src={
+                            //   post.featured_media &&
+                            //   `https://infblogdemo.herokuapp.com${post.featured_media.url}`
+                            // }
                           />
                         </Col>
 

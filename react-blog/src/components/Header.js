@@ -45,7 +45,12 @@ const Header = () => {
     <Container fluid className="shadow ">
       <Navbar light expand="md">
         <NavbarBrand>
-          <img className="blog-logo" src={bloglogo} alt="logo" />
+          <img
+            className="blog-logo"
+            alt="blog-logo"
+            src={bloglogo}
+            alt="logo"
+          />
         </NavbarBrand>
 
         <NavbarToggler onClick={toggle} />

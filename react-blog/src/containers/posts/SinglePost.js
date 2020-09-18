@@ -15,7 +15,7 @@ import { getSinglePost } from "../../redux/actions";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
-
+import blogs from "../../images/blog-post.jpg";
 import { FaList, FaTags, FaArrowLeft } from "react-icons/fa";
 import { Spin } from "antd";
 
@@ -97,10 +97,11 @@ const SinglePost = () => {
                         <CardImg
                           className="singlepost-card-image"
                           alt="Blog"
-                          src={
-                            post.featured_media &&
-                            `https://infblogdemo.herokuapp.com${post.featured_media.url}`
-                          }
+                          src={blogs}
+                          // src={
+                          //   post.featured_media &&
+                          //   `https://infblogdemo.herokuapp.com${post.featured_media.url}`
+                          // }
                         ></CardImg>
                         <CardText className="card-text mt-2">
                           {post.content}

@@ -14,7 +14,7 @@ const Posts = () => {
       <Header></Header>
 
       <Container fluid className="home-bg">
-        <Row className="shadow table-container  bg-white">
+        <Row className="shadow table-container bg-white">
           <Col xs="12">
             <Button
               color="primary"

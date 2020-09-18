@@ -65,7 +65,7 @@ const Tags = ({ setAction, toggle }) => {
       {loading ? (
         <Spin size="large" className="spin" />
       ) : (
-        <Table className="mt-3 border table-layout">
+        <Table responsive className="border table-layout">
           <thead className="table-heading">
             <tr>
               <th>Title</th>
@@ -77,7 +77,7 @@ const Tags = ({ setAction, toggle }) => {
             </tr>
           </thead>
 
-          <tbody className="">
+          <tbody>
             {tagsData !== null &&
               _.sortBy(tagsData, "created_at")
                 .reverse()

@@ -65,7 +65,7 @@ const PostsTable = ({ setAction, toggle }) => {
       {loading ? (
         <Spin size="large" className="spin" />
       ) : (
-        <Table className="border table-layout">
+        <Table responsive className="border table-layout">
           <thead>
             <tr className="table-heading">
               <th>Title</th>
