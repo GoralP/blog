@@ -67,4 +67,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+### Vercel deployment link
 
+This section has moved here: https://reactt-blogg.vercel.app/
