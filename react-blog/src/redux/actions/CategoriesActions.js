@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { config, errorHandle } from "../../common";
 
 export const createCategory = (data, setModal) => {
   const getToken = localStorage.getItem("token");
@@ -8,7 +9,7 @@ export const createCategory = (data, setModal) => {
     dispatch({ type: "CREATE_CATEGORY_PENDING" });
 
     axios
-      .post("https://infblogdemo.herokuapp.com/categories", data, {
+      .post(`${config.apiUrl}/categories`, data, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -19,21 +20,12 @@ export const createCategory = (data, setModal) => {
           type: "CREATE_CATEGORY_SUCCESS",
         });
         dispatch(allCategories());
-        toast.success("Create category successfully!!", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 5000,
-        });
+        toast.success("Create category successfully!!");
         setModal(false);
       })
       .catch((error) => {
         dispatch({ type: "CREATE_CATEGORY_FAILURE", message: error.message });
-        for (const data in error.response.data.data.errors) {
-          error.response.data.data.errors[data].map((error) =>
-            toast.error(error, {
-              position: toast.POSITION.TOP_CENTER,
-            })
-          );
-        }
+        errorHandle(error);
       });
   };
 };
@@ -43,7 +35,7 @@ export const allCategories = () => {
     dispatch({ type: "ALL_CATEGORIES_PENDING" });
 
     axios
-      .get("https://infblogdemo.herokuapp.com/categories")
+      .get(`${config.apiUrl}/categories`)
       .then((res) => {
         dispatch({ type: "ALL_CATEGORIES_SUCCESS", categoriesData: res.data });
       })
@@ -59,7 +51,7 @@ export const getSingleCategory = (id) => {
     dispatch({ type: "GET_SINGLE_CATEGORY_PENDING" });
 
     axios
-      .get(`https://infblogdemo.herokuapp.com/categories/${id}`, {
+      .get(`${config.apiUrl}/categories/${id}`, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -83,7 +75,7 @@ export const deleteCategory = (id) => {
     dispatch({ type: "DELETE_CATEGORY_PENDING" });
 
     axios
-      .delete(`https://infblogdemo.herokuapp.com/categories/${id}`, {
+      .delete(`${config.apiUrl}/categories/${id}`, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -106,7 +98,7 @@ export const updateCategory = (data, id, setModal) => {
     dispatch({ type: "UPDATE_CATEGORY_PENDING" });
     axios
       .put(
-        `https://infblogdemo.herokuapp.com/categories/${id}`,
+        `${config.apiUrl}/categories/${id}`,
         data,
 
         {
@@ -121,21 +113,12 @@ export const updateCategory = (data, id, setModal) => {
           type: "UPDATE_CATEGORY_SUCCESS",
         });
         dispatch(allCategories());
-        toast.success("updated successfully!!", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 5000,
-        });
+        toast.success("updated successfully!!");
         setModal(false);
       })
       .catch((error) => {
         dispatch({ type: "UPDATE_CATEGORY_FAILURE", message: error.message });
-        for (const data in error.response.data.data.errors) {
-          error.response.data.data.errors[data].map((error) =>
-            toast.error(error, {
-              position: toast.POSITION.TOP_CENTER,
-            })
-          );
-        }
+        errorHandle(error);
       });
   };
 };

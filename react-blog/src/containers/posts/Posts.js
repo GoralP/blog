@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container, Row, Col } from "reactstrap";
-import { Header } from "../../components";
+import { Layout } from "../../components";
 import { PostModal, PostsTable } from "../../containers";
 
 const Posts = () => {
@@ -10,9 +10,7 @@ const Posts = () => {
   const [action, setAction] = useState();
 
   return (
-    <>
-      <Header></Header>
-
+    <Layout>
       <Container fluid className="home-bg">
         <Row className="shadow table-container bg-white">
           <Col xs="12">
@@ -41,7 +39,7 @@ const Posts = () => {
           )}
         </Row>
       </Container>
-    </>
+    </Layout>
   );
 };
 

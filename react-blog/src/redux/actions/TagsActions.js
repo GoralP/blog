@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { config, errorHandle } from "../../common";
 
 export const createTag = (data, setModal) => {
   const getToken = localStorage.getItem("token");
@@ -8,7 +9,7 @@ export const createTag = (data, setModal) => {
     dispatch({ type: "CREATE_TAG_PENDING" });
 
     axios
-      .post("https://infblogdemo.herokuapp.com/tags", data, {
+      .post(`${config.apiUrl}/tags`, data, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -19,21 +20,12 @@ export const createTag = (data, setModal) => {
           type: "CREATE_TAG_SUCCESS",
         });
         dispatch(allTags());
-        toast.success("Create tag successfully!!", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 5000,
-        });
+        toast.success("Create tag successfully!!");
         setModal(false);
       })
       .catch((error) => {
         dispatch({ type: "CREATE_TAG_FAILURE", message: error.message });
-        for (const data in error.response.data.data.errors) {
-          error.response.data.data.errors[data].map((error) =>
-            toast.error(error, {
-              position: toast.POSITION.TOP_CENTER,
-            })
-          );
-        }
+        errorHandle(error);
       });
   };
 };
@@ -43,7 +35,7 @@ export const allTags = () => {
     dispatch({ type: "ALL_TAGS_PENDING" });
 
     axios
-      .get("https://infblogdemo.herokuapp.com/tags")
+      .get(`${config.apiUrl}/tags`)
       .then((res) => {
         dispatch({ type: "ALL_TAGS_SUCCESS", tagsData: res.data });
       })
@@ -59,7 +51,7 @@ export const getSingleTag = (id) => {
     dispatch({ type: "GET_SINGLE_TAG_PENDING" });
 
     axios
-      .get(`https://infblogdemo.herokuapp.com/tags/${id}`, {
+      .get(`${config.apiUrl}/tags/${id}`, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -80,7 +72,7 @@ export const deleteTag = (id) => {
     dispatch({ type: "DELETE_TAG_PENDING" });
 
     axios
-      .delete(`https://infblogdemo.herokuapp.com/tags/${id}`, {
+      .delete(`${config.apiUrl}/tags/${id}`, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -101,7 +93,7 @@ export const updateTag = (data, id, setModal) => {
   return (dispatch) => {
     dispatch({ type: "UPDATE_TAG_PENDING" });
     axios
-      .put(`https://infblogdemo.herokuapp.com/tags/${id}`, data, {
+      .put(`${config.apiUrl}/tags/${id}`, data, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -112,21 +104,12 @@ export const updateTag = (data, id, setModal) => {
           type: "UPDATE_TAG_SUCCESS",
         });
         dispatch(allTags());
-        toast.success("Updated successfully!!", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 7000,
-        });
+        toast.success("Updated successfully!!");
         setModal(false);
       })
       .catch((error) => {
         dispatch({ type: "UPDATE_TAG_FAILURE", message: error.message });
-        for (const data in error.response.data.data.errors) {
-          error.response.data.data.errors[data].map((error) =>
-            toast.error(error, {
-              position: toast.POSITION.TOP_CENTER,
-            })
-          );
-        }
+        errorHandle(error);
       });
   };
 };

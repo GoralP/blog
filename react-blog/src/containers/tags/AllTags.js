@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Container, Row, Col } from "reactstrap";
-import { Header } from "../../components";
+import { Layout } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { allTags } from "../../redux/actions";
 import { Spin } from "antd";
@@ -18,9 +18,7 @@ const AllTags = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <Header></Header>
-
+    <Layout>
       <Container fluid className="home-bg">
         <Row className="shadow mx-1 tags-title-container bg-white">
           <Col sm="12" className="tags-title">
@@ -46,7 +44,7 @@ const AllTags = () => {
           </Col>
         </Row>
       </Container>
-    </>
+    </Layout>
   );
 };
 

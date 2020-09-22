@@ -1,5 +1,7 @@
+import { withError } from "antd/lib/modal/confirm";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { config, errorHandle } from "../../common";
 
 export const createPost = (data, setModal) => {
   const getToken = localStorage.getItem("token");
@@ -8,7 +10,7 @@ export const createPost = (data, setModal) => {
     dispatch({ type: "CREATE_POST_PENDING" });
 
     axios
-      .post("https://infblogdemo.herokuapp.com/posts", data, {
+      .post(`${config.apiUrl}/posts`, data, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -18,21 +20,12 @@ export const createPost = (data, setModal) => {
           type: "CREATE_POST_SUCCESS",
         });
         dispatch(allPosts());
-        toast.success("Create post successfully!!", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 5000,
-        });
+        toast.success("Create post successfully!!");
         setModal(false);
       })
       .catch((error) => {
         dispatch({ type: "CREATE_POST_FAILURE", message: error.message });
-        for (const data in error.response.data.data.errors) {
-          error.response.data.data.errors[data].map((error) =>
-            toast.error(error, {
-              position: toast.POSITION.TOP_CENTER,
-            })
-          );
-        }
+        errorHandle(error);
       });
   };
 };
@@ -42,7 +35,7 @@ export const allPosts = () => {
     dispatch({ type: "ALL_POSTS_PENDING" });
 
     axios
-      .get("https://infblogdemo.herokuapp.com/posts")
+      .get(`${config.apiUrl}/posts`)
       .then((res) => {
         dispatch({ type: "ALL_POSTS_SUCCESS", posts: res.data });
       })
@@ -57,7 +50,7 @@ export const getSinglePost = (id) => {
     dispatch({ type: "GET_SINGLE_POST_PENDING" });
 
     axios
-      .get(`https://infblogdemo.herokuapp.com/posts/${id}`)
+      .get(`${config.apiUrl}/posts/${id}`)
       .then((res) => {
         dispatch({ type: "GET_SINGLE_POST_SUCCESS", post: res.data });
       })
@@ -74,7 +67,7 @@ export const deletePost = (id) => {
     dispatch({ type: "DELETE_POST_PENDING" });
 
     axios
-      .delete(`https://infblogdemo.herokuapp.com/posts/${id}`, {
+      .delete(`${config.apiUrl}/posts/${id}`, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -95,7 +88,7 @@ export const updatePost = (data, id, setModal) => {
   return (dispatch) => {
     dispatch({ type: "UPDATE_POST_PENDING" });
     axios
-      .put(`https://infblogdemo.herokuapp.com/posts/${id}`, data, {
+      .put(`${config.apiUrl}/posts/${id}`, data, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
@@ -106,21 +99,12 @@ export const updatePost = (data, id, setModal) => {
           type: "UPDATE_POST_SUCCESS",
         });
         dispatch(allPosts());
-        toast.success("Updated successfully!!", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 7000,
-        });
+        toast.success("Updated successfully!!");
         setModal(false);
       })
       .catch((error) => {
         dispatch({ type: "UPDATE_POST_FAILURE", message: error.message });
-        for (const data in error.response.data.data.errors) {
-          error.response.data.data.errors[data].map((error) =>
-            toast.error(error, {
-              position: toast.POSITION.TOP_CENTER,
-            })
-          );
-        }
+        errorHandle(error);
       });
   };
 };

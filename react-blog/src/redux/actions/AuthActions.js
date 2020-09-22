@@ -1,12 +1,13 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import { config } from "../../common";
 
 export const login = (identifier, password, history) => {
   return (dispatch) => {
     dispatch({ type: "LOGIN_FETCH_PENDING" });
 
     axios
-      .post("https://infblogdemo.herokuapp.com/auth/local", {
+      .post(`${config.apiUrl}/auth/local`, {
         identifier: identifier,
         password: password,
       })
@@ -18,21 +19,14 @@ export const login = (identifier, password, history) => {
         dispatch({
           type: "LOGIN_FETCH_SUCCESS",
         });
-        toast.success(`welcome ${res.data.user.username}!!`, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 5000,
-        });
+        toast.success(`welcome ${res.data.user.username}!!`);
         history.push("/");
       })
       .catch((error) => {
         dispatch({ type: "LOGIN_FETCH_FAILURE", message: error.message });
         console.log(error.response.data);
         error.response.data.message.map((error) =>
-          error.messages.map((item) =>
-            toast.error(item.message, {
-              position: toast.POSITION.TOP_CENTER,
-            })
-          )
+          error.messages.map((item) => toast.error(item.message))
         );
       });
   };
@@ -43,26 +37,19 @@ export const registration = (data) => {
     dispatch({ type: "REGISTRATION_PENDING" });
 
     axios
-      .post("https://infblogdemo.herokuapp.com/auth/local/register", data)
+      .post(`${config.apiUrl}/auth/local/register`, data)
 
       .then((res) => {
         dispatch({
           type: "REGISTRATION_SUCCESS",
         });
 
-        toast.success("Registration successfully done!!", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 7000,
-        });
+        toast.success("Registration successfully done!!");
       })
       .catch((error) => {
         dispatch({ type: "REGISTRATION_FAILURE", message: error.message });
         error.response.data.message.map((error) =>
-          error.messages.map((item) =>
-            toast.error(item.message, {
-              position: toast.POSITION.TOP_CENTER,
-            })
-          )
+          error.messages.map((item) => toast.error(item.message))
         );
       });
   };

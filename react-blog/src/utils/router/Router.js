@@ -1,7 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
-
-import "react-toastify/dist/ReactToastify.css";
 import { PrivateRouter } from "../../components";
 import {
   Tags,

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Container, Row, Col } from "reactstrap";
-import { Header } from "../../components";
+import { Layout } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { allPosts } from "../../redux/actions";
 import { Link } from "react-router-dom";
@@ -23,9 +23,7 @@ const AllPosts = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <Header></Header>
-
+    <Layout>
       <Container className="home-bg " fluid={true}>
         <h2 className="allpost-heading">All Posts</h2>
         {loading ? (
@@ -49,16 +47,18 @@ const AllPosts = () => {
                           <img
                             alt="Blog"
                             className="allpost-card-image"
-                            src={blogs}
-                            // src={
-                            //   post.featured_media &&
-                            //   `https://infblogdemo.herokuapp.com${post.featured_media.url}`
-                            // }
+                            src={
+                              post.featured_media
+                                ? `https://infblogdemo.herokuapp.com${post.featured_media.url}`
+                                : blogs
+                            }
                           />
                         </Col>
 
                         <Col sm="9">
-                          <p className="line-clamp "> {post.content}</p>
+                          <p className="line-clamp ">
+                            {post.content.substring(0, 270) + "..."}
+                          </p>
 
                           <Button className="read-more-button">
                             <Link
@@ -99,7 +99,7 @@ const AllPosts = () => {
           </>
         )}
       </Container>
-    </>
+    </Layout>
   );
 };
 

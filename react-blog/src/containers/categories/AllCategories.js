@@ -3,6 +3,7 @@ import { Button, Container, Row, Col } from "reactstrap";
 import { Header } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { allCategories } from "../../redux/actions";
+import { Layout } from "../../components";
 
 import { Spin } from "antd";
 
@@ -19,9 +20,7 @@ const AllCategories = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <Header></Header>
-
+    <Layout>
       <Container fluid className="home-bg">
         <Row className="shadow tags-title-container bg-white">
           <Col sm="12" className="tags-title">
@@ -47,7 +46,7 @@ const AllCategories = () => {
           </Col>
         </Row>
       </Container>
-    </>
+    </Layout>
   );
 };
 

@@ -12,7 +12,7 @@ function App() {
   return (
     <Provider store={store}>
       <RouterBlog></RouterBlog>
-      <ToastContainer />
+      <ToastContainer position="top-center" autoClose={5000} />
     </Provider>
   );
 }

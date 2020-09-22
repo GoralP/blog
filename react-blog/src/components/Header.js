@@ -10,7 +10,7 @@ import {
   NavbarText,
   Button,
   NavItem,
-  Dropdown,
+  UncontrolledDropdown,
   DropdownItem,
   DropdownToggle,
   DropdownMenu,
@@ -25,9 +25,6 @@ const Header = () => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
   const history = useHistory();
 
   const token = localStorage.getItem("token");
@@ -45,12 +42,7 @@ const Header = () => {
     <Container fluid className="shadow ">
       <Navbar light expand="md">
         <NavbarBrand>
-          <img
-            className="blog-logo"
-            alt="blog-logo"
-            src={bloglogo}
-            alt="logo"
-          />
+          <img className="blog-logo" alt="blog-logo" src={bloglogo} />
         </NavbarBrand>
 
         <NavbarToggler onClick={toggle} />
@@ -84,11 +76,7 @@ const Header = () => {
 
           <NavbarText>
             {token ? (
-              <Dropdown
-                className="user pr-2 login-user"
-                isOpen={dropdownOpen}
-                toggle={toggleDropdown}
-              >
+              <UncontrolledDropdown>
                 <DropdownToggle nav caret className="login-user-name">
                   {user}
                 </DropdownToggle>
@@ -113,7 +101,7 @@ const Header = () => {
                     <Link onClick={logout}>Log out</Link>
                   </DropdownItem>
                 </DropdownMenu>
-              </Dropdown>
+              </UncontrolledDropdown>
             ) : (
               <Link to="/login">
                 <Button className="create-button">Sign in</Button>

@@ -9,7 +9,7 @@ import {
   Row,
   Tooltip,
 } from "reactstrap";
-import { Header } from "../../components";
+import { Layout } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { getSinglePost } from "../../redux/actions";
 import { useParams } from "react-router-dom";
@@ -38,9 +38,7 @@ const SinglePost = () => {
   }, [dispatch, id]);
 
   return (
-    <>
-      <Header></Header>
-
+    <Layout>
       <Container className="home-bg" fluid={true}>
         <Container>
           <Row className="singlepost-layout bg-white">
@@ -97,11 +95,11 @@ const SinglePost = () => {
                         <CardImg
                           className="singlepost-card-image"
                           alt="Blog"
-                          src={blogs}
-                          // src={
-                          //   post.featured_media &&
-                          //   `https://infblogdemo.herokuapp.com${post.featured_media.url}`
-                          // }
+                          src={
+                            post.featured_media
+                              ? `https://infblogdemo.herokuapp.com${post.featured_media.url}`
+                              : blogs
+                          }
                         ></CardImg>
                         <CardText className="card-text mt-2">
                           {post.content}
@@ -115,7 +113,7 @@ const SinglePost = () => {
           </Row>
         </Container>
       </Container>
-    </>
+    </Layout>
   );
 };
 

@@ -21,8 +21,6 @@ import {
   allCategories,
   allTags,
 } from "../../redux/actions";
-// import { allCategories } from "../../redux/categories/actions";
-// import { allTags } from "../../redux/tags/actions";
 
 const postsSchema = yup.object().shape({
   title: yup.string().required("Title is a required field."),
