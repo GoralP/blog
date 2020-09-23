@@ -17,7 +17,7 @@ import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import blogs from "../../images/blog-post.jpg";
 import { FaList, FaTags, FaArrowLeft } from "react-icons/fa";
-import { Spin } from "antd";
+import Loader from "react-loader-spinner";
 
 const SinglePost = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const SinglePost = () => {
         <Container>
           <Row className="singlepost-layout bg-white">
             {loading ? (
-              <Spin size="large" className="spin" />
+              <Loader type="Oval" color="#00BFFF" height={40} width={40} />
             ) : (
               <>
                 {post !== null && (

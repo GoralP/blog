@@ -5,7 +5,7 @@ import { allTags, getSingleTag, deleteTag } from "../../redux/actions";
 import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 import Moment from "react-moment";
 import swal from "sweetalert";
-import { Spin } from "antd";
+import Loader from "react-loader-spinner";
 import _ from "lodash";
 
 const Tags = ({ setAction, toggle }) => {
@@ -63,7 +63,7 @@ const Tags = ({ setAction, toggle }) => {
   return (
     <>
       {loading ? (
-        <Spin size="large" className="spin" />
+        <Loader type="Oval" color="#00BFFF" height={40} width={40} />
       ) : (
         <Table responsive className="border table-layout">
           <thead className="table-heading">

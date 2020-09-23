@@ -9,7 +9,7 @@ import {
 import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 import Moment from "react-moment";
 import swal from "sweetalert";
-import { Spin } from "antd";
+import Loader from "react-loader-spinner";
 import _ from "lodash";
 
 const CategoriesTable = ({ setAction, toggle }) => {
@@ -67,7 +67,7 @@ const CategoriesTable = ({ setAction, toggle }) => {
   return (
     <>
       {loading ? (
-        <Spin size="large" className="spin" />
+        <Loader type="Oval" color="#00BFFF" height={40} width={40} />
       ) : (
         <Table className="border table-layout">
           <thead>

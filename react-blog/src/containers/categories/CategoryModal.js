@@ -15,6 +15,7 @@ import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { createCategory, updateCategory } from "../../redux/actions";
+import Loader from "react-loader-spinner";
 
 const categoriesSchema = yup.object().shape({
   title: yup.string().required("Title is a required field."),
@@ -47,7 +48,7 @@ const CategoryModal = ({ modal, setModal, toggle, action }) => {
       </ModalHeader>
 
       {loading ? (
-        <Label>Loading...</Label>
+        <Loader type="Oval" color="#00BFFF" height={40} width={40} />
       ) : (
         <Form onSubmit={handleSubmit(onSubmit)}>
           <ModalBody>

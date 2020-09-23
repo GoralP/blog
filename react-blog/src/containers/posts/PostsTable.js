@@ -5,7 +5,7 @@ import { allPosts, getSinglePost, deletePost } from "../../redux/actions";
 import { FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 import Moment from "react-moment";
 import swal from "sweetalert";
-import { Spin } from "antd";
+import Loader from "react-loader-spinner";
 import _ from "lodash";
 
 const PostsTable = ({ setAction, toggle }) => {
@@ -63,7 +63,7 @@ const PostsTable = ({ setAction, toggle }) => {
   return (
     <>
       {loading ? (
-        <Spin size="large" className="spin" />
+        <Loader type="Oval" color="#00BFFF" height={40} width={40} />
       ) : (
         <Table responsive className="border table-layout">
           <thead>
@@ -92,12 +92,12 @@ const PostsTable = ({ setAction, toggle }) => {
                     <td>{post.user && post.user.username}</td>
                     <td>
                       {post.categories.map((catagory) => (
-                        <>{catagory.title}</>
+                        <div>{catagory.title}</div>
                       ))}
                     </td>
                     <td>
                       {post.tags.map((tag) => (
-                        <>{tag.title}</>
+                        <div>{tag.title}</div>
                       ))}
                     </td>
                     <td>

@@ -3,7 +3,7 @@ import { Button, Container, Row, Col } from "reactstrap";
 import { Layout } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { allTags } from "../../redux/actions";
-import { Spin } from "antd";
+import Loader from "react-loader-spinner";
 
 const AllTags = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const AllTags = () => {
           </Col>
           <Col xs="12">
             {loading ? (
-              <Spin size="large" className="spin" />
+              <Loader type="Oval" color="#00BFFF" height={40} width={40} />
             ) : (
               <>
                 {tagsData !== null &&

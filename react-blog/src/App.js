@@ -7,6 +7,7 @@ import { store } from "./redux/store";
 import { ToastContainer } from "react-toastify";
 import RouterBlog from "./utils/router";
 import "antd/dist/antd.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 function App() {
   return (

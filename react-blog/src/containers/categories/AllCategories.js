@@ -4,8 +4,7 @@ import { Header } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { allCategories } from "../../redux/actions";
 import { Layout } from "../../components";
-
-import { Spin } from "antd";
+import Loader from "react-loader-spinner";
 
 const AllCategories = () => {
   const dispatch = useDispatch();
@@ -28,7 +27,7 @@ const AllCategories = () => {
           </Col>
           <Col sm="12">
             {loading ? (
-              <Spin size="large" className="spin" />
+              <Loader type="Oval" color="#00BFFF" height={40} width={40} />
             ) : (
               <>
                 {categoriesData !== null &&
