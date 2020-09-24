@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Button, Container, Row, Col } from "reactstrap";
-import { Header } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { allCategories } from "../../redux/actions";
 import { Layout } from "../../components";
@@ -27,7 +26,13 @@ const AllCategories = () => {
           </Col>
           <Col sm="12">
             {loading ? (
-              <Loader type="Oval" color="#00BFFF" height={40} width={40} />
+              <Loader
+                type="Oval"
+                color="#00BFFF"
+                height={40}
+                width={40}
+                className="my-2"
+              />
             ) : (
               <>
                 {categoriesData !== null &&

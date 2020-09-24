@@ -43,7 +43,7 @@ const SinglePost = () => {
         <Container>
           <Row className="singlepost-layout bg-white">
             {loading ? (
-              <Loader type="Oval" color="#00BFFF" height={40} width={40} />
+              <Loader type="Oval" color="#00BFFF" height={40} width={40} className="my-2" />
             ) : (
               <>
                 {post !== null && (

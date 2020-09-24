@@ -67,7 +67,13 @@ const CategoriesTable = ({ setAction, toggle }) => {
   return (
     <>
       {loading ? (
-        <Loader type="Oval" color="#00BFFF" height={40} width={40} />
+        <Loader
+          type="Oval"
+          color="#00BFFF"
+          height={40}
+          width={40}
+          className="my-2"
+        />
       ) : (
         <Table className="border table-layout">
           <thead>

@@ -48,7 +48,13 @@ const TagsModal = ({ modal, setModal, toggle, action }) => {
       </ModalHeader>
 
       {loading ? (
-        <Loader type="Oval" color="#00BFFF" height={40} width={40} />
+        <Loader
+          type="Oval"
+          color="#00BFFF"
+          height={40}
+          width={40}
+          className="my-2"
+        />
       ) : (
         <Form onSubmit={handleSubmit(onSubmit)}>
           <ModalBody>

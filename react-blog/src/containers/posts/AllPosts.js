@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { allPosts } from "../../redux/actions";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
-import { Spin } from "antd";
+import Loader from "react-loader-spinner";
 import { FaUser, FaCalendarAlt, FaList, FaTags } from "react-icons/fa";
 import _ from "lodash";
 import blogs from "../../images/blog-post.jpg";
@@ -27,7 +27,13 @@ const AllPosts = () => {
       <Container className="home-bg " fluid={true}>
         <h2 className="allpost-heading">All Posts</h2>
         {loading ? (
-          <Spin size="large" className="spin" />
+          <Loader
+            type="Oval"
+            color="#00BFFF"
+            height={40}
+            width={40}
+            className="my-2"
+          />
         ) : (
           <>
             {posts !== null &&

@@ -48,22 +48,6 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
     dispatch(allTags());
   }, [dispatch]);
 
-  const categoryOption =
-    categoriesData !== null &&
-    categoriesData.map((category) => ({
-      id: category.id,
-      value: category.title,
-      label: category.title,
-    }));
-
-  const tagOption =
-    tagsData !== null &&
-    tagsData.map((tag) => ({
-      id: tag.id,
-      value: tag.title,
-      label: tag.title,
-    }));
-
   const userid = localStorage.getItem("userid");
 
   const onSubmit = (data) => {
@@ -81,7 +65,13 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
       </ModalHeader>
 
       {loading ? (
-        <Loader type="Oval" color="#00BFFF" height={40} width={40} />
+        <Loader
+          type="Oval"
+          color="#00BFFF"
+          height={40}
+          width={40}
+          className="my-2"
+        />
       ) : (
         <Form onSubmit={handleSubmit(onSubmit)}>
           <ModalBody>
@@ -144,19 +134,14 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
               <Label> Categories </Label>:
               <Controller
                 as={Select}
-                options={categoryOption}
+                options={categoriesData}
+                getOptionLabel={(option) => option.title}
+                getOptionValue={(option) => option.title}
                 control={control}
                 name="categories"
                 isMulti
                 defaultValue={
-                  action === "edit"
-                    ? post !== null &&
-                      post.categories.map((category) => ({
-                        id: category.id,
-                        label: category.title,
-                        value: category.title,
-                      }))
-                    : ""
+                  action === "edit" ? post !== null && post.categories : ""
                 }
                 ref={register}
                 className={errors && errors.categories ? "is-invalid" : ""}
@@ -170,19 +155,14 @@ const PostModal = ({ modal, setModal, toggle, action }) => {
               <Label> Tags </Label>:
               <Controller
                 as={Select}
-                options={tagOption}
+                options={tagsData}
+                getOptionLabel={(option) => option.title}
+                getOptionValue={(option) => option.title}
                 control={control}
                 name="tags"
                 isMulti
                 defaultValue={
-                  action === "edit"
-                    ? post !== null &&
-                      post.tags.map((tag) => ({
-                        id: tag.id,
-                        label: tag.title,
-                        value: tag.title,
-                      }))
-                    : ""
+                  action === "edit" ? post !== null && post.tags : ""
                 }
                 ref={register}
                 className={errors && errors.tags ? "is-invalid" : ""}

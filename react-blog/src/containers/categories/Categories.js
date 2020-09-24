@@ -18,8 +18,9 @@ const Categories = () => {
               onClick={() => {
                 toggle();
                 setAction("create");
+
               }}
-              className=" create-button"
+              className="create-button"
             >
               Create Category
             </Button>

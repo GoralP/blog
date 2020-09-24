@@ -1,4 +1,3 @@
-import { withError } from "antd/lib/modal/confirm";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { config, errorHandle } from "../../common";

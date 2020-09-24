@@ -7,12 +7,12 @@ import { store } from "./redux/store";
 import { ToastContainer } from "react-toastify";
 import RouterBlog from "./utils/router";
 import "antd/dist/antd.css";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
   return (
     <Provider store={store}>
-      <RouterBlog></RouterBlog>
+      <RouterBlog />
       <ToastContainer position="top-center" autoClose={5000} />
     </Provider>
   );
